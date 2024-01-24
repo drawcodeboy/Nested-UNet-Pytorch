@@ -60,10 +60,10 @@ class DecoderBlock(nn.Module):
         return x
 
 class Nested_UNet(nn.Module):
-    def __init__(self, channels, mode='accurate'):
+    def __init__(self, channel, mode='accurate'):
         super(Nested_UNet, self).__init__()
 
-        self.channels = channels
+        self.channel = channel
 
         '''
         deep_supervision = 0번째 층의 ConvBlock을 모두 사용하도록 한다.
@@ -77,7 +77,7 @@ class Nested_UNet(nn.Module):
         else:
             raise ValueError("check 'mode' arguement")
 
-        self.x_0_0 = EncoderBlock(channels, 32)
+        self.x_0_0 = EncoderBlock(self.channel, 32)
         self.x_1_0 = EncoderBlock(32, 64)
         self.x_2_0 = EncoderBlock(64, 128)
         self.x_3_0 = EncoderBlock(128, 256)
