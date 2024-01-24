@@ -6,7 +6,28 @@ from Nested_UNet import Nested_UNet
 
 model = Nested_UNet(channel=1, mode='accurate')
 ```
-
+* Implemented UNet++ (Nested UNet) through PyTorch.
+* <b>Re-designed skip pathways</b> are successfully implemented, and <b>Deep supervision</b> is provided by hyperparameter to enable the mode of <b>Deep supervision</b>.
+* The mode provides <b>Accurate Mode, Fast Mode</b>, as suggested in the paper.
+```
+if mode == 'accurate':
+    self.deep_supervision = True
+elif mode == 'fast':
+    self.deep_supervision = False
+else:
+    raise ValueError("check 'mode' arguement")
+```  
+* PyTorch를 통해 UNet++(Nested UNet)를 구현하였습니다.
+* <b>Re-designed skip pathways</b>를 성공적으로 구현하며, <b>Deep supervision</b>의 모드를 설정할 수 있게끔 hyperparameter로 제공합니다.
+* 모드는 논문에서 제안되었듯이 <b>Accurate Mode, Fast Mode</b>를 제공합니다.
+```
+if mode == 'accurate':
+    self.deep_supervision = True
+elif mode == 'fast':
+    self.deep_supervision = False
+else:
+    raise ValueError("check 'mode' arguement")
+``` 
 * * *
 # Configuration
 ![image](https://blog.kakaocdn.net/dn/k94V4/btqDFo3FuBW/9py6IMKOdNQWWe2vdmF8Kk/img.png)
